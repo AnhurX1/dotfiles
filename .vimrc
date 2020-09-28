@@ -55,6 +55,11 @@ nnoremap <space> za
 let g:SimpylFold_docstring_preview=1
 
 
+"cycling through buffers
+map <F9> :bprevious<CR>
+map <F10> :bnext<CR>
+
+
 " UTF-8 Support
 set encoding=utf-8
 
@@ -74,6 +79,7 @@ let g:monokai_gui_italic = 1
 set nu
 set cursorline
 set tabstop=4
+set ruler
 set expandtab
 set backspace=indent,eol,start
 set hidden
@@ -90,3 +96,10 @@ set virtualedit=onemore
 
 " alias to run from ESC button
 :inoremap jk <Esc>
+
+"Vim transparency
+" hi Normal guibg=NONE ctermbg=NONE
+
+
+autocmd FileType python map <buffer> <F1> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F1> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
