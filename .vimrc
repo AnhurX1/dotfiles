@@ -109,10 +109,11 @@ syntax on
 " Theme
 
 syntax on
-"colorscheme monokai
+colorscheme monokai
 set t_Co=256 
 let g:monokai_term_italic = 1
 let g:monokai_gui_italic = 1
+hi Normal guibg=NONE ctermbg=NONE
 
 " personal preferences
 
@@ -137,19 +138,6 @@ set virtualedit=onemore
 " alias to run from ESC button
 :inoremap jk <Esc>
 
-
-"Vim transparency
-let t:is_transparent = 0
-function! Toggle_transparent()
-    if t:is_transparent == 0
-        hi Normal guibg=NONE ctermbg=NONE
-        let t:is_transparent = 1
-    else
-        set background=dark
-        let t:is_tranparent = 0
-    endif
-endfunction
-nnoremap <C-t> : call Toggle_transparent()<CR>
 
 
 " Run code With <F1> button
