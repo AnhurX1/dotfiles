@@ -138,9 +138,10 @@ set virtualedit=onemore
 " alias to run from ESC button
 :inoremap jk <Esc>
 
-
+" Split Resize
+nmap 9 :vertical res +2<CR> " vertical increase pane by 2
+nmap 0 :vertical res -2<CR> " vertical decrease pane by 2
 
 " Run code With <F1> button
-
 autocmd FileType python map <buffer> <F1> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F1> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
