@@ -19,15 +19,13 @@ let g:SimpylFold_docstring_preview=1
 Plugin 'chamindra/marvim'
 
 "   PYTHON
-Plugin 'vim-scripts/indentpython.vim
+Plugin 'vim-scripts/indentpython.vim'
 Plugin 'davidhalter/jedi-vim'
 let python_highlight_all=1
 syntax on
 
 "   NAVIGATION
 Plugin 'scrooloose/nerdtree'
-set Ctrl+n to open NERDTree
-
 map <C-n> :NERDTreeToggle<CR>
 
 Plugin 'crusoexia/vim-monokai'
@@ -39,7 +37,10 @@ Plugin 'tpope/vim-surround'
 "   WEBDEV
 
 Plugin 'mattn/emmet-vim'
-let g:user_emmet_leader_key='<C-X>'
+let g:user_emmet_mode='n'    "only enable normal mode functions.
+let g:user_emmet_leader_key=','
+Plugin 'andrewradev/tagalong.vim'
+let g:tagalong_verbose = 1
 
 
 call vundle#end()            " required
