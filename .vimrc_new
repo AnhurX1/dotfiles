@@ -1,0 +1,136 @@
+" __   _(_)_ __ ___  _ __ ___
+" \ \ / | | '_ ` _ \| '__/ __|
+"  \ V /| | | | | | | | | (__
+"   \_/ |_|_| |_| |_|_|  \___|
+
+
+
+set nocompatible              " required
+filetype off                  " required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+"   PLUGINS
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tmhedberg/SimpylFold'
+let g:SimpylFold_docstring_preview=1
+Plugin 'chamindra/marvim'
+
+"   PYTHON
+Plugin 'vim-scripts/indentpython.vim
+Plugin 'davidhalter/jedi-vim'
+let python_highlight_all=1
+syntax on
+
+"   NAVIGATION
+Plugin 'scrooloose/nerdtree'
+set Ctrl+n to open NERDTree
+
+map <C-n> :NERDTreeToggle<CR>
+
+Plugin 'crusoexia/vim-monokai'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-surround'
+
+
+"   WEBDEV
+
+Plugin 'mattn/emmet-vim'
+let g:user_emmet_leader_key='<C-X>'
+
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+
+"   AIRLINE CONFIG
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='deus'
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+
+" Type :WipeReg commnd to clear all registers
+
+command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+
+
+"   SPLITTING
+
+set splitbelow
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nmap 9 :vertical res +2<CR> " vertical increase pane by 2
+nmap 0 :vertical res -2<CR> " vertical decrease pane by 2
+
+
+"   FOLDING
+
+set foldmethod=indent
+set foldlevel=99
+
+
+"   BUFFER CYCLE
+
+map <F9> :bprevious<CR>
+map <F10> :bnext<CR>
+
+
+"   UTF-8
+
+set encoding=utf-8
+
+
+"   THEME
+
+syntax on
+colorscheme monokai
+set t_Co=256 
+let g:monokai_term_italic = 1
+let g:monokai_gui_italic = 1
+hi Normal guibg=NONE ctermbg=NONE
+
+
+"   PERSONAL PREFERENCES
+
+set nu
+set cursorline
+set tabstop=4
+set ruler
+set expandtab
+set backspace=indent,eol,start
+set hidden
+set showmode
+set showmatch
+set title
+set laststatus=2
+set relativenumber
+
+
+"   Set the cursor after the last char
+set virtualedit=onemore
+
+
+"   ESC alias
+:inoremap jk <Esc>
+
+
+" Run python code With <F1> button
+
+autocmd FileType python map <buffer> <F1> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F1> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+" Compile and Run C code
+" Ctrl+c to compile
+" Ctrl+x to execute
+"nnoremap <C-c> :!gcc -o %:r.out %
+"nnoremap <C-x> :!./%:r.out
