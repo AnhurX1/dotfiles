@@ -13,10 +13,15 @@ call vundle#begin()
 
 "   PLUGINS
 
-Plugin 'gmarik/Vundle.vim'
+"Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 let g:SimpylFold_docstring_preview=1
 Plugin 'chamindra/marvim'
+Plugin 'preservim/nerdcommenter'
+Plugin 'wfxr/minimap.vim'
+let g:minimap_width = 10
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
 
 "   PYTHON
 Plugin 'vim-scripts/indentpython.vim'
@@ -37,7 +42,7 @@ Plugin 'tpope/vim-surround'
 "   WEBDEV
 
 Plugin 'mattn/emmet-vim'
-let g:user_emmet_mode='n'    "only enable normal mode functions.
+let g:user_emmet_mode='nv'    "only enable normal mode functions.
 let g:user_emmet_leader_key=','
 Plugin 'andrewradev/tagalong.vim'
 let g:tagalong_verbose = 1
@@ -135,3 +140,8 @@ autocmd FileType python imap <buffer> <F1> <esc>:w<CR>:exec '!python3' shellesca
 " Ctrl+x to execute
 "nnoremap <C-c> :!gcc -o %:r.out %
 "nnoremap <C-x> :!./%:r.out
+
+
+
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
