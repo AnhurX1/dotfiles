@@ -12,16 +12,33 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 "   PLUGINS
+Plugin 'crusoexia/vim-monokai'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
-"Plugin 'gmarik/Vundle.vim'
+"   FOLD
 Plugin 'tmhedberg/SimpylFold'
 let g:SimpylFold_docstring_preview=1
+" z-c >> fold
+" z-o >> unfold
+
+"   MACRO REPO
 Plugin 'chamindra/marvim'
+" record in q register
+" F2 to search/recall
+
+" COMMENTS
 Plugin 'preservim/nerdcommenter'
-Plugin 'wfxr/minimap.vim'
-let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
+filetype plugin on
+" <leader> + cc (comment) or cs to comment-sexy
+" <leader> + cu (un-comment)
+
+
+"   BEST PLUGIN OUT THERE ( CONQUER OF COMPLETION )
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+
+"   HIGHLIGHTING
+Plugin 'sheerun/vim-polyglot'
 
 "   PYTHON
 Plugin 'vim-scripts/indentpython.vim'
@@ -32,18 +49,24 @@ syntax on
 "   NAVIGATION
 Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
+" o: open in current window
+" i: open split (gi for preview)
+" s: open vsplit (gs for preview)
+" x: close parent of node
 
-Plugin 'crusoexia/vim-monokai'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-surround'
+" wrap the entire line in parentheses = yss)
+" change/delete surround = cs/ds
+" add surrond around word = ysiw
 
 
 "   WEBDEV
-
 Plugin 'mattn/emmet-vim'
-let g:user_emmet_mode='nv'    "only enable normal mode functions.
+let g:user_emmet_mode='nv'      "only enable normal/visual mode functions.
 let g:user_emmet_leader_key=','
+" double comma would do the job
+Plugin 'w0rp/ale'
+
 Plugin 'andrewradev/tagalong.vim'
 let g:tagalong_verbose = 1
 
@@ -63,7 +86,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 
 " Type :WipeReg commnd to clear all registers
-
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 
 
@@ -127,6 +149,7 @@ set virtualedit=onemore
 
 
 "   ESC alias
+
 :inoremap jk <Esc>
 
 
@@ -138,8 +161,19 @@ autocmd FileType python imap <buffer> <F1> <esc>:w<CR>:exec '!python3' shellesca
 " Compile and Run C code
 " Ctrl+c to compile
 " Ctrl+x to execute
-"nnoremap <C-c> :!gcc -o %:r.out %
+"nnoremap <C-c> :!gcc -o %:r.out % <Enter>
 "nnoremap <C-x> :!./%:r.out
+
+
+" Compile and Run c++ code 
+nnoremap <C-c> :!g++ -o  %:r.out % -std=c++11<Enter>
+nnoremap <C-x> :!./%:r.out
+
+" Run Javascript code with <F1> button
+map <F1> :call Run() <cr>
+function Run()
+  exec "! node %"
+endfunction
 
 
 
