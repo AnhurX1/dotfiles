@@ -75,7 +75,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
-
 "   AIRLINE CONFIG
 
 let g:airline#extensions#tabline#enabled = 1
